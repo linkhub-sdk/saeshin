@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-
+<title>입력폼을 표준화 해보자.</title>
 <head>
 <link href="Theme/Default/base.css" rel="stylesheet" type="text/css" />
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
@@ -19,70 +19,81 @@ body > div[sample] {display: inline-block;width: 600px;text-align: left;vertical
 <table sample>
 <tr><th>숫자</th><td>
 
-<input is="lh-number" name="count"/>
+<input is="lh-number" name="count" value='456744'/>
 
-</td></tr>
-<tr><th>영문</th><td>
-
-<input is="lh-eng" name="engName"/>
-
+정수 숫자 입력, 설정에 따라 음수통제
 </td></tr>
 <tr><th>금액</th><td>
 
-<input is="lh-cost" name="supplyCost"/>
+<input is="lh-cost" name="supplyCost" value="-4,535,345"/>
 
+','처리
 </td></tr>
 <tr><th>금액(양수)</th><td>
 
-<input is="lh-cost" name="posCount" positive />
+<input is="lh-cost" name="posCount" positive value="4,343,434"/>
 
+','처리
 </td></tr>
 <tr><th>금액(소수점)</th><td>
 
-<input is="lh-decimal" name="amount"/>
+<input is="lh-float" name="amount" value="-123,222.12"/>
 
+소수점 입력, ','처리
+</td></tr>
+<tr><th>영문</th><td>
+
+<input is="lh-eng" name="engName" value="3423424"/>
+
+영문만 입력 가능하도록, IME만 의존하면 크롬에서 문제가 있음
 </td></tr>
 <tr><th>전화번호</th><td>
 
-<input is="lh-tel" name="memberTEL"/>
+<input is="lh-tel" name="memberTEL" value="070-7998-7100"/>
 
+'-' 자동 처리, 숫자,'-' 만 입력통제.
 </td></tr>
 <tr><th>휴대폰</th><td>
 
-<input is="lh-phone" name="memberPhone"/>
+<input is="lh-phone" name="memberPhone" value="010-6640-3707"/>
 
+'-' 자동 처리, 숫자,'-' 만 입력통제.
 </td></tr>
 
 <tr><th>이메일</th><td>
-<input is="lh-email" name="memberEmail"/>
+<input is="lh-email" name="memberEmail" value="master@linkhub.co.kr"/>
 
+영문만 입력되는 이메일 주소.
 </td></tr>
 <tr><th>아이디</th><td>
 
-<input is="lh-id" name="LoginID"/>
+<input is="lh-id" name="LoginID" value="linkhub"/>
 
+아이디 형식 체크.
 </td></tr>
 <tr><th>주민번호</th><td>
 
-<input is="lh-ssn" name="memberJumin"/>
+<input is="lh-ssn" name="memberJumin" value="112233-3456789"/>
 
+숫자, '-' 자동처리
 </td></tr>
 <tr><th>사업자번호</th><td>
 
-<input is="lh-corpnum" name="invoicerCorpNum"/>
+<input is="lh-corpnum" name="invoicerCorpNum" value="679-87-00433"/>
+숫자, '-' 자동처리
 
 </td></tr>
 <tr><th>라디오</th><td>
 
-<input is="lh-radio" name="SenderOnly" value="0" label="개인조회">
+<input is="lh-radio" name="SenderOnly" value="0" label="개인조회" checked>
 <input is="lh-radio" name="SenderOnly" value="1" label="전체조회">
 
 </td></tr>
 <tr><th>체크박스</th><td>
 
-<input is="lh-checkbox" name="SenderOnly" value="0" label="정발행">
-<input is="lh-checkbox" name="SenderOnly" value="1" label="역발행">
-<input is="lh-checkbox" name="SenderOnly" value="2" label="위수탁">
+<input is="lh-checkbox" name="IssueType" value="0" label="정발행" checked>
+<input is="lh-checkbox" name="IssueType" value="1" label="역발행">
+<input is="lh-checkbox" name="IssueType" value="2" label="위수탁">
 
 </td></tr>
 <tr><th>버튼</th><td>
@@ -134,7 +145,7 @@ body > div[sample] {display: inline-block;width: 600px;text-align: left;vertical
 </table>
 
 <p id="test"></p>
-
+<button onclick="addInput();">버튼?</button>
 
 </div>
 
@@ -146,7 +157,7 @@ body > div[sample] {display: inline-block;width: 600px;text-align: left;vertical
 <script language="javascript">
 
 function addInput() {
- $("#test").append('<input is="lh-number" name="number3" value="0123"/>');
+ $("#test").append('<input is="lh-date" name="number3" value="0123"/>');
 }
 
 (function () {
