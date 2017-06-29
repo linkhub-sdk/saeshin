@@ -1,8 +1,8 @@
 
 
-input[is=linkhub-date] {width:69px;}
+input[is=lh-date] {width:69px;}
 
-button[is=linkhub-button] {border-radius:1px; border:1px solid #bbbbbb; display:inline-block; background:#f7f7f7; text-align:center; vertical-align:middle; color:#555555; letter-spacing:0; cursor:pointer; }
+button[is=lh-button] {border-radius:1px; border:1px solid #bbbbbb; display:inline-block; background:#f7f7f7; text-align:center; vertical-align:middle; color:#555555; letter-spacing:0; cursor:pointer; }
 
 .lh-radio-label {cursor:pointer; margin-right:50px;}
 .lh-checkbox-label {cursor:pointer; margin-right:50px;}

@@ -19,95 +19,95 @@ body > div[sample] {display: inline-block;width: 600px;text-align: left;vertical
 <table sample>
 <tr><th>숫자</th><td>
 
-<input is="linkhub-number" name="count"/>
+<input is="lh-number" name="count"/>
 
 </td></tr>
 <tr><th>영문</th><td>
 
-<input is="linkhub-eng" name="engName"/>
+<input is="lh-eng" name="engName"/>
 
 </td></tr>
 <tr><th>금액</th><td>
 
-<input is="linkhub-cost" name="supplyCost"/>
+<input is="lh-cost" name="supplyCost"/>
 
 </td></tr>
 <tr><th>금액(양수)</th><td>
 
-<input is="linkhub-cost" name="posCount" positive />
+<input is="lh-cost" name="posCount" positive />
 
 </td></tr>
 <tr><th>금액(소수점)</th><td>
 
-<input is="linkhub-decimal" name="amount"/>
+<input is="lh-decimal" name="amount"/>
 
 </td></tr>
 <tr><th>전화번호</th><td>
 
-<input is="linkhub-tel" name="memberTEL"/>
+<input is="lh-tel" name="memberTEL"/>
 
 </td></tr>
 <tr><th>휴대폰</th><td>
 
-<input is="linkhub-phone" name="memberPhone"/>
+<input is="lh-phone" name="memberPhone"/>
 
 </td></tr>
 
 <tr><th>이메일</th><td>
-<input is="linkhub-email" name="memberEmail"/>
+<input is="lh-email" name="memberEmail"/>
 
 </td></tr>
 <tr><th>아이디</th><td>
 
-<input is="linkhub-id" name="LoginID"/>
+<input is="lh-id" name="LoginID"/>
 
 </td></tr>
 <tr><th>주민번호</th><td>
 
-<input is="linkhub-ssn" name="memberJumin"/>
+<input is="lh-ssn" name="memberJumin"/>
 
 </td></tr>
 <tr><th>사업자번호</th><td>
 
-<input is="linkhub-corpnum" name="invoicerCorpNum"/>
+<input is="lh-corpnum" name="invoicerCorpNum"/>
 
 </td></tr>
 <tr><th>라디오</th><td>
 
-<input is="linkhub-radio" name="SenderOnly" value="0" label="개인조회">
-<input is="linkhub-radio" name="SenderOnly" value="1" label="전체조회">
+<input is="lh-radio" name="SenderOnly" value="0" label="개인조회">
+<input is="lh-radio" name="SenderOnly" value="1" label="전체조회">
 
 </td></tr>
 <tr><th>체크박스</th><td>
 
-<input is="linkhub-checkbox" name="SenderOnly" value="0" label="정발행">
-<input is="linkhub-checkbox" name="SenderOnly" value="1" label="역발행">
-<input is="linkhub-checkbox" name="SenderOnly" value="2" label="위수탁">
+<input is="lh-checkbox" name="SenderOnly" value="0" label="정발행">
+<input is="lh-checkbox" name="SenderOnly" value="1" label="역발행">
+<input is="lh-checkbox" name="SenderOnly" value="2" label="위수탁">
 
 </td></tr>
 <tr><th>버튼</th><td>
 
-<button is="linkhub-button" name="AddText" onclick="console.log('버튼입니다.')">버튼입니다.</button>
+<button is="lh-button" name="AddText" onclick="console.log('버튼입니다.')">버튼입니다.</button>
 
 </td></tr>
 <tr><th>날자(싱글)</th><td>
 
-<input is="linkhub-date" name="StartDate" value="2017-06-27" minDate="2009-01-01" maxDate="2017-12-31"/>
+<input is="lh-date" name="StartDate" value="2017-06-27" minDate="2009-01-01" maxDate="2017-12-31"/>
 
 </td></tr>
 <tr><th>날자(F ~ T)</th><td>
-<input is="linkhub-date" name="StartDate" value="2017-06-27" />~<input is="linkhub-date" name="EndDate" value="2017-06-27" />
+<input is="lh-date" name="StartDate" value="2017-06-27" />~<input is="lh-date" name="EndDate" value="2017-06-27" />
 
 </td></tr>
 <tr><th>날자(button)</th><td>
 
-<input is="linkhub-date" name="StartDate" value="2017-06-27" />~<input is="linkhub-date" name="EndDate" value="2017-06-27" />
+<input is="lh-date" name="StartDate" value="2017-06-27" />~<input is="lh-date" name="EndDate" value="2017-06-27" />
 <button>1분기</button><button>2분기</button><button>3분기</button><button>4분기</button><button>상반기</button><button>하반기</button>
 
 </td></tr>
 <tr><th>콤보(div)</th><td>
 
-<combo type="linkhub-combo" name="SomeStuff">
+<combo type="lh-combo" name="SomeStuff">
     <item value="1" selected>1번</item>
     <item value="2">2번</item>
     <item value="3">3번</item>
@@ -146,7 +146,7 @@ body > div[sample] {display: inline-block;width: 600px;text-align: left;vertical
 <script language="javascript">
 
 function addInput() {
- $("#test").append('<input type="linkhub-number" name="number3" value="0123"/>');
+ $("#test").append('<input is="lh-number" name="number3" value="0123"/>');
 }
 
 (function () {
