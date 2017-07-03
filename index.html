@@ -2,11 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <title>입력폼을 표준화 해보자.</title>
 <head>
-<script src="https://polygit.org/webcomponentsjs+1.0.0-rc.5/components/webcomponentsjs/webcomponents-loader.js"></script>
+     <meta charset="UTF-8">
+<script src="/bower_components/webcomponentsjs/webcomponents-loader.js"></script>
 <link rel="import" href="test-bootstrap.html">
 <link href="Theme/Default/base.css" rel="stylesheet" type="text/css" />
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-<script src="bootstrap.js" type="text/javascript"></script>
+<!-- script src="bootstrap.js" type="text/javascript"></script-->
 <style>
 body {text-align:center;font-size:12px;}
 body > div[sample] > table[sample] {border:1px solid;width:100%; border-collapse:collapse;}
@@ -17,7 +18,6 @@ body > div[sample] {display: inline-block;width: 600px;text-align: left;vertical
 </style>
 </head>
 <body>
-    <custom-element></custom-element>
 <div sample>
 <table sample>
 <tr><th>숫자</th><td>
@@ -88,6 +88,8 @@ body > div[sample] {display: inline-block;width: 600px;text-align: left;vertical
 </td></tr>
 <tr><th>라디오</th><td>
 
+<lh-radio name="SenderOnly" label="개인임"></lh-radio>
+<lh-radio name="SenderOnly" label="1임"></lh-radio>
 <input is="lh-radio" type="radio" name="SenderOnly" value="0" label="개인조회" checked>
 <input is="lh-radio" type="radio" name="SenderOnly" value="1" label="전체조회">
 
