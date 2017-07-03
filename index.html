@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <title>입력폼을 표준화 해보자.</title>
 <head>
-<script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+<script src="https://polygit.org/webcomponentsjs+1.0.0-rc.5/components/webcomponentsjs/webcomponents-loader.js"></script>
+<link rel="import" href="test-bootstrap.html">
 <link href="Theme/Default/base.css" rel="stylesheet" type="text/css" />
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 <script src="bootstrap.js" type="text/javascript"></script>
@@ -16,6 +17,7 @@ body > div[sample] {display: inline-block;width: 600px;text-align: left;vertical
 </style>
 </head>
 <body>
+<custom-element></custom-element>
 <div sample>
 <table sample>
 <tr><th>숫자</th><td>
@@ -86,8 +88,8 @@ body > div[sample] {display: inline-block;width: 600px;text-align: left;vertical
 </td></tr>
 <tr><th>라디오</th><td>
 
-<input is="lh-radio" name="SenderOnly" value="0" label="개인조회" checked>
-<input is="lh-radio" name="SenderOnly" value="1" label="전체조회">
+<input is="lh-radio" type="radio" name="SenderOnly" value="0" label="개인조회" checked>
+<input is="lh-radio" type="radio" name="SenderOnly" value="1" label="전체조회">
 
 </td></tr>
 <tr><th>체크박스</th><td>
@@ -104,16 +106,16 @@ body > div[sample] {display: inline-block;width: 600px;text-align: left;vertical
 </td></tr>
 <tr><th>날자(싱글)</th><td>
 
-<input is="lh-date" name="StartDate" value="2017-06-27" minDate="2009-01-01" maxDate="2017-12-31"/>
+<input is="lh-date" name="StartDate" value="2017-06-27" minDate="2009-01-01" maxDate="2017-12-31"/><button is="lh-button">🗓</button>
 
 </td></tr>
 <tr><th>날자(F ~ T)</th><td>
-<input is="lh-date" name="StartDate" value="2017-06-27" />~<input is="lh-date" name="EndDate" value="2017-06-27" />
+<input is="lh-date" name="StartDate" value="2017-06-27" /><button is="lh-button">🗓</button>~<input is="lh-date" name="EndDate" value="2017-06-27" /><button is="lh-button">🗓</button>
 
 </td></tr>
 <tr><th>날자(button)</th><td>
 
-<input is="lh-date" name="StartDate" value="2017-06-27" />~<input is="lh-date" name="EndDate" value="2017-06-27" />
+<input is="lh-date" name="StartDate" value="2017-06-27" /><button is="lh-button">🗓</button>~<input is="lh-date" name="EndDate" value="2017-06-27" /><button is="lh-button">🗓</button>
 <button>1분기</button><button>2분기</button><button>3분기</button><button>4분기</button><button>상반기</button><button>하반기</button>
 
 </td></tr>
