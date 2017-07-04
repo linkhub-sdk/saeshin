@@ -28,6 +28,18 @@ $.fn.caret = function(pos) {
         return this;
     }
 }
+$.fn.caretToEnd = function() {
+    var ctrl = this[0];
+    if (ctrl.createTextRange) {
+        var range = ctrl.createTextRange();
+        range.collapse(false);
+        range.select();
+    } else if (ctrl.setSelectionRange) {
+        ctrl.focus();
+        ctrl.setSelectionRange($(this).val().length,$(this).val().length);
+    }
+    return this;
+}
 
 $.fn.filteredValue = function(newVal) {
     if(this.val() != newVal) {
@@ -56,7 +68,7 @@ $.fn.filteredValue = function(newVal) {
            if($(this).is('[cost]')) newVal = newVal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
            $(this).filteredValue(newVal);
-           $(this).caret(-1);
+           $(this).caretToEnd();
            e.preventDefault();
            return false;
        }
@@ -77,7 +89,7 @@ $.fn.filteredValue = function(newVal) {
             newVal = newVal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
         $(this).filteredValue(newVal);
-        $(this).caret(-1);
+        $(this).caretToEnd();
     });
 
     $(document).on("keyup change",'input[type=text][exclude]',function(e) {

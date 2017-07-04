@@ -1,4 +1,4 @@
-
+input[type=text]::-ms-clear {display: none;}
 
 input[number] {text-align:right;}
 input[cost] {text-align:right;}
