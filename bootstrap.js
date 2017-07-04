@@ -69,7 +69,6 @@ $.fn.filteredValue = function(newVal) {
            if($(this).is('[cost]')) newVal = newVal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
            $(this).filteredValue(newVal);
-           $(this).caretToEnd();
            e.preventDefault();
            return false;
        }
@@ -90,7 +89,6 @@ $.fn.filteredValue = function(newVal) {
             newVal = newVal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
         $(this).filteredValue(newVal);
-        $(this).caretToEnd();
     });
 
     $(document).on("keyup change",'input[type=text][exclude]',function(e) {
