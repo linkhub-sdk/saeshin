@@ -1,58 +1,92 @@
+$.fn.caret = function(pos) {
+    if(pos == undefined || pos == 'undefined') {
+        var ctrl = this[0];
+        var CaretPos = 0;
+
+        if (ctrl.selectionStart || ctrl.selectionStart == 0) {// Standard.
+            CaretPos = ctrl.selectionStart;
+        } else if (document.selection) {// Legacy IE
+            ctrl.focus ();
+            var Sel = document.selection.createRange ();
+            Sel.moveStart ('character', -ctrl.value.length);
+            CaretPos = Sel.text.length;
+        }
+        return (CaretPos);
+    } else {
+        var ctrl = this[0];
+        if (ctrl.setSelectionRange) {
+            ctrl.focus();
+            ctrl.setSelectionRange(pos,pos);
+        } else if (ctrl.createTextRange) {
+
+            var range = ctrl.createTextRange();
+            range.collapse(true);
+            range.moveEnd('character', pos);
+            range.moveStart('character', pos);
+            range.select();
+        }
+        return this;
+    }
+}
+
+$.fn.filteredValue = function(newVal) {
+    if(this.val() != newVal) {
+        var gap = this.val().length - newVal.length;
+        var oldCaret = $(this).caret();
+        this.val(newVal)
+            .caret(oldCaret - gap);
+     }
+     return this;
+};
 
 (function () {
+    $(document).on("keydown",'input[type=text]',function(e) {
+       if (($(this).is('[nospace]') || $(this).is('[number]')) && e.which === 32) return false;
+       if ( $(this).is('[number]')) {
+           if(/[A-Z]/g.test(String.fromCharCode(e.keyCode))) return false;
+           else console.log(e.keyCode);
+       }
+       if ( $(this).is('[number]') && e.which === 189) {
+           if($(this).is('[positive]')) return false;
+           if($(this).val() == '') return true;
 
-    function textOnKeyDown() {
-        console.log($(this).val());
-    }
+           var newVal = ($(this).is('[cost]') ? $(this).val().replace(/,/g,'') : $(this).val()) * -1;
 
-    if('registerElement' in document) {
+           if(isNaN(newVal))newVal = '';
+           if($(this).is('[cost]')) newVal = newVal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-        var proto = Object.create(HTMLInputElement.prototype);
-        proto.createdCallback = function() {
-            this.type = "text";
-            this.addEventListener("keydown", textOnKeyDown);
-        };
+           $(this).filteredValue(newVal);
+           $(this).caret(-1);
+           e.preventDefault();
+           return false;
+       }
+    });
 
-        document.registerElement("lh-number", {prototype: proto,extends: 'input'});
+    $(document).on("keyup change",'input[type=text][english]',function(e) {
+        var newVal = $(this).val().replace(/[^\a-zA-Z ]/g,'');
+        $(this).filteredValue(newVal);
+    });
+    $(document).on("keyup change",'input[type=text][number]',function(e) {
+        var newVal = $(this).val().replace(/[^\d-]/g,'');
+        if(!(newVal == '' || newVal == '-')) {
+            newVal = Number(newVal);
+            if(isNaN(newVal))newVal = '';
+        }
+        if($(this).is('[positive]')) newVal = Math.abs(newVal);
+        if($(this).is('[cost]')) {
+            newVal = newVal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+        $(this).filteredValue(newVal);
+        $(this).caret(-1);
+    });
 
-        proto = Object.create(HTMLInputElement.prototype);
-        proto.createdCallback = function() {
-            this.type = "text";
-            this.addEventListener("keydown", textOnKeyDown);
-        };
-
-        document.registerElement("lh-eng", {prototype: proto,extends: 'input'});
-
-        proto = Object.create(HTMLInputElement.prototype);
-        proto.createdCallback = function() {
-            this.type = "radio";
-            $(this).wrap('<label class="lh-radio-label"/>').after($(this).attr("label"));
-        };
-
-        document.registerElement("lh-radio", {prototype: proto,extends: 'input'});
-
-        proto = Object.create(HTMLInputElement.prototype);
-        proto.createdCallback = function() {
-            this.type = "checkbox";
-            $(this).wrap('<label class="lh-checkbox-label"/>').after($(this).attr("label"));
-        };
-
-        document.registerElement("lh-checkbox", {prototype: proto,extends: 'input'});
-
-        proto = Object.create(HTMLInputElement.prototype);
-        proto.createdCallback = function() {
-            this.type = "text";
-            //$(this).after('<button is="lh-button">🗓</button>');
-        };
-
-        document.registerElement("lh-date", {prototype: proto,extends: 'input'});
-    } else {
-        $("input[id=lh-radio]")
-    }
+    $(document).on("keyup change",'input[type=text][exclude]',function(e) {
+        var newVal = $(this).val().replace(new RegExp($(this).attr('exclude'),'g'),'');
+        $(this).filteredValue(newVal);
+    });
 
     $(document).on("click",'tabs > tab',function(e){
         $(this).siblings("tab[selected]").removeAttr("selected");
         $(this).attr("selected","selected");
     });
-
 })();
