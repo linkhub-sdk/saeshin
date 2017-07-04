@@ -56,7 +56,8 @@ $.fn.filteredValue = function(newVal) {
        if (($(this).is('[nospace]') || $(this).is('[number]')) && e.which === 32) return false;
        if ( $(this).is('[number]')) {
            if(/[A-Z]/g.test(String.fromCharCode(e.keyCode))) return false;
-           else console.log(e.keyCode);
+           //TODO 막을수 있는건 막아보자.
+           //else console.log(e.keyCode);
        }
        if ( $(this).is('[number]') && e.which === 189) {
            if($(this).is('[positive]')) return false;
